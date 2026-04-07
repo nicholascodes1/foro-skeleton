@@ -128,3 +128,5 @@ export default function LandingHero({
     </section>
   );
 }
+
+// Button colors need to be fixed 
