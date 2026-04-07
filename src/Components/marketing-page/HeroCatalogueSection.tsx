@@ -5,8 +5,7 @@ const CARDS_PER_SET = 5;
 export default function HeroCatalogueSection() {
   return (
     <section
-      className="relative h-screen bg-cover bg-center bg-no-repeat flex flex-col overflow-hidden"
-      style={{ backgroundImage: "url('/images/hero-catalogue-bg.png')" }}
+      className="relative h-screen bg-cover bg-center bg-no-repeat flex flex-col overflow-visible"
       aria-label="Il Foro competition catalogue"
     >
       <div className="flex flex-col flex-1 pt-10 md:pt-14 min-h-0">
@@ -21,7 +20,7 @@ export default function HeroCatalogueSection() {
             }}
           >
             <em>Il Foro</em>{" "}
-            has a near endless catalogue of competitions and oppurtunities for
+            has a near endless catalogue of competitions and opportunities for
             you to seize
           </h2>
         </div>
@@ -30,7 +29,7 @@ export default function HeroCatalogueSection() {
         <div className="flex-1" />
 
         {/* Infinite marquee card row */}
-        <div className="overflow-hidden w-full pb-10 shrink-0" aria-label="Competition cards">
+        <div className="overflow-visible w-full pb-10 shrink-0" aria-label="Competition cards">
           {/*
            * Two identical sets rendered side by side.
            * The marquee animation translates the track by -50% (= one set's width),
@@ -45,11 +44,19 @@ export default function HeroCatalogueSection() {
                 className="flex gap-[22px] pr-[22px] shrink-0"
                 aria-hidden={setIdx === 1 ? true : undefined}
               >
-                {Array.from({ length: CARDS_PER_SET }).map((_, i) => (
-                  <div key={i} role={setIdx === 0 ? "listitem" : undefined}>
-                    <CompetitionCard />
-                  </div>
-                ))}
+                {Array.from({ length: CARDS_PER_SET }).map((_, i) => {
+                  const cardIndex = setIdx * CARDS_PER_SET + i;
+                  const rotation = cardIndex % 2 === 0 ? 35 : -35;
+                  return (
+                    <div
+                      key={i}
+                      role={setIdx === 0 ? "listitem" : undefined}
+                      className="overflow-visible"
+                    >
+                      <CompetitionCard rotation={rotation} />
+                    </div>
+                  );
+                })}
               </div>
             ))}
           </div>

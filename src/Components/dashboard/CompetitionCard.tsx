@@ -52,13 +52,18 @@ const LocationPinIcon = () => (
   </svg>
 );
 
-export default function CompetitionCard() {
+interface CompetitionCardProps {
+  rotation?: number;
+}
+
+export default function CompetitionCard({ rotation = 0 }: CompetitionCardProps) {
   const card = MOCK_COMPETITION;
 
   return (
     <article
       className="w-[325px] shrink-0 rounded-[6px] border border-black/15 bg-white overflow-hidden
-        transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5 cursor-pointer"
+        transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5 cursor-pointer origin-center"
+      style={{ transform: `rotate(${rotation}deg)` }}
     >
       {/* Card Image */}
       <div className="relative h-[208px] w-full">
