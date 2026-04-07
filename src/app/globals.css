@@ -10,6 +10,15 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* ilforo brand tokens */
+  --color-brand-cream: #f0ead8;
+  --color-brand-accent: #834a4a;
+  --color-brand-dark: #1e1e1e;
+
+  /* Brand fonts */
+  --font-garamond: var(--font-eb-garamond);
+  --font-grotesk: var(--font-space-grotesk);
 }
 
 @media (prefers-color-scheme: dark) {
