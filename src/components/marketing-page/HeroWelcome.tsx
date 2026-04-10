@@ -29,8 +29,8 @@ export default function LandingHero({
   titleFirstLine = "Welcome to",
   titleSecondLine = "Il Foro",
   subtitle = "A centralised solution to finding competitions in fields of your interest and like-minded teammates.",
-  signUpHref = "src/app/auth/signup-page",
-  logInHref = "src/app/auth/login-page",
+  signUpHref = "/auth/signup-page",
+  logInHref = "/auth/login-page",
   linkedInHref = "https://www.linkedin.com/company/il-foro1/",
   instagramHref = "https://www.instagram.com/ilforo.web/",
 }: HeroWelcomeProps) {
