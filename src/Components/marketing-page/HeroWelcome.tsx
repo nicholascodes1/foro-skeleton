@@ -3,6 +3,9 @@
 // READY FOR DEPLOYMENT //
 // READY FOR DEPLOYMENT //
 
+import React from "react";
+import Image from "next/image";
+
 export interface HeroWelcomeProps {
   titleFirstLine?: string;
   titleSecondLine?: string;
@@ -70,8 +73,8 @@ export default function LandingHero({
             aria-label="Sign up for Il Foro"
           >
             <span>Sign Up</span>
-            <img
-              src="/dashboard-assets/HeroWelcome-assets/arrow-up-right.svg"
+            <Image
+              src="/marketing-page-assets/HeroWelcome-assets/arrow-up-right.svg"
               alt=""
               width={22}
               height={22}
@@ -105,8 +108,8 @@ export default function LandingHero({
             role="listitem"
             className="transition-all duration-200 hover:scale-110 hover:opacity-70"
           >
-            <img
-              src="/dashboard-assets/HeroWelcome-assets/linkedin.svg"
+            <Image
+              src="/marketing-page-assets/HeroWelcome-assets/linkedin.svg"
               alt="LinkedIn"
               width={40}
               height={38}
@@ -121,8 +124,8 @@ export default function LandingHero({
             role="listitem"
             className="transition-all duration-200 hover:scale-110 hover:opacity-70"
           >
-            <img
-              src="/dashboard-assets/HeroWelcome-assets/instagram.svg"
+            <Image
+              src="/marketing-page-assets/HeroWelcome-assets/instagram.svg"
               alt="Instagram"
               width={40}
               height={40}

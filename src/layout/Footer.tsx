@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React from "react";
 import Link from "next/link";
@@ -69,7 +69,7 @@ export default function Footer() {
               className="transition-opacity hover:opacity-70"
             >
               <Image
-                src="/dashboard-assets/HeroWelcome-assets/linkedin.svg"
+                src="/marketing-page-assets/HeroWelcome-assets/linkedin.svg"
                 alt="LinkedIn"
                 width={31}
                 height={31}
@@ -83,7 +83,7 @@ export default function Footer() {
               className="transition-opacity hover:opacity-70"
             >
               <Image
-                src="/dashboard-assets/HeroWelcome-assets/instagram.svg"
+                src="/marketing-page-assets/HeroWelcome-assets/instagram.svg"
                 alt="Instagram"
                 width={31}
                 height={31}
@@ -95,7 +95,7 @@ export default function Footer() {
               className="transition-opacity hover:opacity-70"
             >
               <Image
-                src="/dashboard-assets/Footer Assets/mail.svg"
+                src="/marketing-page-assets/Footer Assets/mail.svg"
                 alt="Email"
                 width={37}
                 height={37}
