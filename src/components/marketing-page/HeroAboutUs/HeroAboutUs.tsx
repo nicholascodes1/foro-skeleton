@@ -66,7 +66,7 @@ export default function HeroAboutUs({
   missionHeadingPrefix = "Mission",
   missionHeadingEmphasis = "Statement",
   missionSubtitle = "We want to democratise opportunities",
-  missionDescription = "At Il Foro we believe in equal opportunities for all students. That means making sure information about academic competitions are available and accessible for each and every student to challenge themselves and have their interests flourish. With Il Foro, gatekeeping is a thing of the past.",
+  missionDescription = "At Il Foro we believe in equal opportunities for all students That means making sure information about academic competitions are available and accessible for each and every student to challenge themselves and have their interests flourish. With Il Foro, gatekeeping is a thing of the past.",
 
   // Statistics
   statistics = DEFAULT_STATISTICS,
@@ -79,7 +79,7 @@ export default function HeroAboutUs({
   return (
     <main className="w-full">
       {/* Main content container with max-width constraint */}
-      <section className="w-full mx-auto px-6 md:px-12 lg:px-16 py-12 md:py-20">
+      <section className="w-full mx-auto px-26 py-12 ">
         {/* Title with emphasis */}
         <h1
           className="text-[77.09px] md:text-7.5xl font-medium leading-tight mb-12 text-black"
@@ -93,15 +93,16 @@ export default function HeroAboutUs({
 
         {/* Main content card */}
         <article
-          className="w-full flex flex-col gap-12 md:gap-16 rounded-[10px] border border-black p-8 md:p-12 lg:p-16"
+          className="w-full flex flex-col gap-12 md:gap-16 rounded-[10px] border border-black p-8 md:p-12 lg:p-16 justify-center align-center overflow-hidden"
           style={{
             backgroundColor: containerBackgroundColor,
             borderColor: borderColor,
             borderRadius: borderRadius,
           }}
         >
+          <div className="flex justify-center">
           {/* Mission Section: Logo + Text Content */}
-          <section className="flex flex-col md:flex-row gap-8 md:gap-[42px] items-start">
+          <section className="flex flex-col lg:flex-row gap-8 md:gap-[42px] items-start">
             {/* Logo Container */}
             <div className="w-full md:w-[393px] flex-shrink-0">
               <figure className="m-0">
@@ -145,10 +146,10 @@ export default function HeroAboutUs({
               </p>
             </div>
           </section>
-
+          </div>
           {/* Statistics Section */}
           <section
-            className="flex flex-col md:flex-row gap-12 md:gap-[60px] items-center justify-center pt-8 md:pt-12 pb-8"
+            className="flex flex-col lg:flex-row gap-12 md:gap-[60px] items-center justify-center pt-8 md:pt-0 pb-8"
             aria-label="Key statistics"
           >
             {statistics.map((stat, index) => (
@@ -160,6 +161,7 @@ export default function HeroAboutUs({
               />
             ))}
           </section>
+          
         </article>
       </section>
     </main>
