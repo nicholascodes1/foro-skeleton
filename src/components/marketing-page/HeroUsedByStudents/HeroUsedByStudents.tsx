@@ -11,10 +11,7 @@ export default function HeroUsedByStudents() {
         {/* Hero content */}
         <div className="relative z-10 flex flex-col pt-32 pl-10 pr-6 pb-16 gap-1 md:pt-40 md:pl-16 md:pr-12 md:pb-28 md:gap-2 lg:pt-52 lg:pl-24 lg:pr-20 lg:pb-40 lg:gap-2.5">
           {/* Heading: "Used By Students At" */}
-          <h1
-            className="font-garamond text-[clamp(36px,5.35vw,77px)]
-leading-[0.94] text-black font-medium"
-          >
+          <h1 className="font-garamond text-4xl md:text-6xl lg:text-7xl leading-none text-black font-medium">
             <span>Used By </span>
             <em className="text-cream">Students</em>
             <span> At</span>
