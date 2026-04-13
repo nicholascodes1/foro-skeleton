@@ -25,7 +25,7 @@ const groteskStyle: React.CSSProperties = {
     "var(--font-space-grotesk, 'Space Grotesk', system-ui, sans-serif)",
 };
 
-export default function LandingHero({
+export default function HeroWelcome({
   titleFirstLine = "Welcome to",
   titleSecondLine = "Il Foro",
   subtitle = "A centralised solution to finding competitions in fields of your interest and like-minded teammates.",

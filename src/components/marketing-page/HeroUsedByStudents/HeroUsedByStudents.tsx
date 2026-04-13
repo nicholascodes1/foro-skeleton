@@ -5,7 +5,7 @@ const garamondStyle: React.CSSProperties = {
   fontFamily: "var(--font-eb-garamond, 'EB Garamond', Georgia, serif)",
 };
 
-export default function HerousedByStudents() {
+export default function HeroUsedByStudents() {
   return (
     <main>
       <section
