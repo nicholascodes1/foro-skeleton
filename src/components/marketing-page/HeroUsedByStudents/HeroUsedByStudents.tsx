@@ -1,41 +1,22 @@
 import React from "react";
 import InfiniteCarousel from "./InfiniteCarousell";
 
-const garamondStyle: React.CSSProperties = {
-  fontFamily: "var(--font-eb-garamond, 'EB Garamond', Georgia, serif)",
-};
-
 export default function HeroUsedByStudents() {
   return (
     <main>
       <section
-        className="relative w-full overflow-hidden"
-        style={{ minHeight: "clamp(400px, 44.1vw, 700px)" }}
+        className="relative w-full overflow-hidden min-h-96 md:min-h-[512px] lg:min-h-[700px]"
         aria-label="Used by students at top universities"
       >
         {/* Hero content */}
-        <div
-          className="relative z-10 flex flex-col"
-          style={{
-            paddingTop: "clamp(130px, 14.17vw, 204px)",
-            paddingLeft: "clamp(40px, 6.53vw, 94px)",
-            paddingRight: "clamp(24px, 5.83vw, 84px)",
-            paddingBottom: "clamp(60px, 10.97vw, 158px)",
-            gap: "clamp(5px, 0.7vw, 10px)",
-          }}
-        >
+        <div className="relative z-10 flex flex-col pt-32 pl-10 pr-6 pb-16 gap-1 md:pt-40 md:pl-16 md:pr-12 md:pb-28 md:gap-2 lg:pt-52 lg:pl-24 lg:pr-20 lg:pb-40 lg:gap-2.5">
           {/* Heading: "Used By Students At" */}
           <h1
-            style={{
-              ...garamondStyle,
-              fontSize: "clamp(36px, 5.35vw, 77px)",
-              lineHeight: 0.94,
-              color: "#000000",
-              fontWeight: 500,
-            }}
+            className="font-garamond text-[clamp(36px,5.35vw,77px)]
+leading-[0.94] text-black font-medium"
           >
             <span>Used By </span>
-            <em style={{ color: "var(--color-cream)" }}>Students</em>
+            <em className="text-cream">Students</em>
             <span> At</span>
           </h1>
 
