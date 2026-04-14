@@ -65,7 +65,7 @@ export default function Navbar({
   return (
     <nav className="relative w-full bg-white m-10" aria-label="Main navigation">
       {/* ── Main row ── */}
-      <div className="flex justify-center items-center gap-30 relative w-full h-full">
+      <div className="flex justify-center items-center gap-32 relative w-full h-full">
         {/* Left Links (Desktop) */}
         <div className="hidden items-center gap-25 lg:flex">
           {leftLinks.map((link) => (
