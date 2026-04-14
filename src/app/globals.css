@@ -5,28 +5,24 @@
 :root {
   --background: #ffffff;
   --foreground: #ffffff;
-
-  /* brand colors */
-
-  --color-brand-accent: #834a4a;
-  --color-olive: #4b4b30;
-  --color-mauve: #834a4a;
-  --color-cream: #f0ead8;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --font-garamond: 'EB Garamond', serif;
+  --font-space-grotesk: 'Space Grotesk', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+
 
   --color-brand-accent: #834a4a;
   --color-olive: #4b4b30;
   --color-mauve: #834a4a;
   --color-cream: #f0ead8;
   --color-dark-gray: #374151;
-
-  --size-7_5xl: 88rem;
 }
 
 @keyframes infinite-scroll {
@@ -38,12 +34,6 @@
   }
 }
 
-@theme {
-  --font-garamond: 'EB Garamond', serif;
-  --font-space-grotesk: 'Space Grotesk', sans-serif;
-  --font-inter: 'Inter', sans-serif;
-}
-
 @utility scrollbar-hidden {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -53,19 +43,6 @@
   }
 }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-@utility marquee-track {
-  animation: marquee 40s linear infinite;
-  will-change: transform;
-
-  &:hover {
-    animation-play-state: paused;
-  }
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -77,5 +54,4 @@
 body {
   background: #ffffff;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }

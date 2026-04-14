@@ -7,12 +7,14 @@ const ebGaramond = EB_Garamond({
   weight: ["400", "500"],
   style: ["normal", "italic"],
   variable: "--font-eb-garamond",
+  display: "swap",
 });
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["500"],
   variable: "--font-space-grotesk",
+  display: "swap",
 });
 
 export default function TestingPageLayout({
@@ -22,7 +24,7 @@ export default function TestingPageLayout({
 }) {
   return (
     <div
-      className={`${ebGaramond.variable} ${spaceGrotesk.variable} min-h-screen`}
+      className={`${ebGaramond.variable} ${spaceGrotesk.variable} min-h-screen antialiased`}
     >
       <Navbar />
       {children}
