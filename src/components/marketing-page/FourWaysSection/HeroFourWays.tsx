@@ -49,8 +49,7 @@ export default function HeroFourWays() {
           >
             Il Foro
           </span>{" "}
-          make it easier to<br className="hidden md:block" /> find academic
-          competitions
+          makes it easier to find academic competitions
         </h2>
 
         {/* 2-Column Staggered Grid */}
