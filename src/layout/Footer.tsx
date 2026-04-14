@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -35,7 +37,7 @@ export default function Footer() {
               alt="Il Foro Logo"
               width={400}
               height={200}
-              className="h-auto w-auto object-contain object-left"
+              className="h-auto w-auto object-contain object-left p-8"
             />
           </Link>
 
