@@ -22,7 +22,7 @@ export default function Footer() {
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             aria-label="Scroll to top"
-            className="transition-opacity hover:opacity-80 appearance-none bg-transparent border-none cursor-pointer p-0"
+            className="transition-opacity hover:opacity-80 active:scale-95 appearance-none bg-transparent border-none cursor-pointer p-0"
           >
             <Image
               src="/marketing-page-assets/il-foro-logo.png"

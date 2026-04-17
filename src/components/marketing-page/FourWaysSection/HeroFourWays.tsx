@@ -25,10 +25,10 @@ export default function HeroFourWays() {
       />
 
       <div className="relative z-10 mx-auto max-w-screen-2xl">
-        {/* Section Heading - Matches HeroWelcome scaling */}
+        {/* Section Heading */}
         <h2
           id="four-ways-heading"
-          className="font-garamond mb-12 text-left text-4xl font-medium leading-[1.1] text-black md:mb-20 md:text-6xl lg:text-7xl"
+          className="font-garamond mb-12 text-left text-4xl font-medium leading-[1.1] text-black md:mb-16 md:text-6xl lg:text-7xl"
         >
           Four ways <span className="italic text-mauve">Il Foro</span> makes it
           easier to find
@@ -37,10 +37,10 @@ export default function HeroFourWays() {
         </h2>
 
         {/* 2-Column Staggered Grid */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 lg:gap-20">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
           
-          {/* Left Column */}
-          <div className="flex flex-col gap-8 md:gap-16 lg:gap-24">
+          {/* Left Column - Reduced gaps from 16/24 down to 6/10 */}
+          <div className="flex flex-col gap-6 md:gap-10">
             <div className="relative w-full">
               <Image
                 src={ASSETS.competitionCards}
@@ -62,8 +62,8 @@ export default function HeroFourWays() {
             </div>
           </div>
 
-          {/* Right Column (Offset downward slightly on desktop) */}
-          <div className="flex flex-col gap-8 md:mt-24 md:gap-16 lg:gap-24">
+          {/* Right Column - Reduced gaps and reduced the top offset (md:mt-12) */}
+          <div className="flex flex-col gap-6 md:mt-12 md:gap-10">
             <div className="relative w-full">
               <Image
                 src={ASSETS.aggregator}
