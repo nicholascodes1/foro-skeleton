@@ -133,7 +133,7 @@ export default function Navbar({
             : "max-h-0 opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
-        <div className="flex flex-col items-start gap-4 py-8 pl-8 pr-8">
+        <div className="flex flex-col items-start gap-4 pl-8 pr-8">
           {links.map((link) => (
             <Link
               key={link.href}
