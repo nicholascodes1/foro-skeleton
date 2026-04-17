@@ -1,5 +1,3 @@
-// Proper links need to be filled
-
 "use client";
 
 import React, { useState } from "react";
@@ -19,33 +17,19 @@ export interface NavbarProps {
   newsletterLabel?: string;
 }
 
-// Hrefs need to match!
 const defaultLinks: NavLink[] = [
   { label: "About", href: "/about" },
   { label: "For Hosts", href: "/for-hosts" },
   { label: "Winners", href: "/winners-showcase" },
 ];
 
-const scrollToTop = (e: React.MouseEvent) => {
-  e.preventDefault(); // Stop the '#' from appearing in the URL
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
-
 function NewsletterIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      viewBox="0 0 23.9719 22.4841"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <svg viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         d="M12.3922,5.7875c0,-1.1655 -0.45,-2.2831 -1.24,-3.1071c-0.8,-0.824 -1.88,-1.287 -3.01,-1.287h-6.38v16.4771h7.44c0.85,0 1.66,0.348 2.26,0.966c0.6,0.618 0.93,1.456 0.93,2.33M12.3922,5.7875v15.379M12.3922,5.7875c0,-1.1655 0.45,-2.2831 1.25,-3.1071c0.79,-0.824 1.88,-1.287 3,-1.287h6.38v16.4771h-7.44c-0.84,0 -1.66,0.348 -2.25,0.966c-0.6,0.618 -0.94,1.456 -0.94,2.33"
         stroke="currentColor"
-        strokeWidth="2.71818"
+        strokeWidth="2.7"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -66,105 +50,95 @@ export default function Navbar({
   const rightLinks = links.slice(2);
 
   return (
-    <nav className="relative w-full bg-white m-10" aria-label="Main navigation">
-      {/* ── Main row ── */}
-      <div className="flex justify-center items-center gap-32 relative w-full h-full">
-        {/* Left Links (Desktop) */}
-        <div className="hidden items-center gap-25 lg:flex">
-          {leftLinks.map((link) => (
+    <header className="sticky top-0 z-50 w-full">
+      <div 
+        className={`absolute left-0 top-0 w-full -z-10 bg-white/70 backdrop-blur-md transition-[height] duration-250 ease-out ${
+          menuOpen ? "h-[340px]" : "h-full"
+        }`}
+      />
+
+      <nav className="relative z-10 w-full px-6 py-4 lg:px-12">
+        <div className="mx-auto max-w-7xl flex justify-between items-center gap-4 lg:gap-10">
+          <div className="hidden items-center gap-8 lg:flex flex-1 justify-end">
+            {leftLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="font-space-grotesk text-base font-medium text-black transition-opacity hover:opacity-60"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex shrink-0 items-center lg:px-6">
             <Link
-              key={link.href}
-              href={link.href}
-              className="font-space-grotesk text-2xl font-medium text-black transition-opacity duration-200 hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              href="/"
+              aria-label="Il Foro – go to homepage or scroll to top"
+              className="transition-transform hover:opacity-80 active:scale-95 cursor-pointer"
+              onClick={(e) => {
+                if (window.location.pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
             >
-              {link.label}
+              <Image
+                src={logoSrc}
+                alt={logoAlt}
+                width={160}
+                height={160}
+                priority
+                className="h-auto w-20 sm:w-24 lg:w-28 object-contain"
+              />
             </Link>
-          ))}
-        </div>
+          </div>
 
-        {/* Center Logo */}
-        <Link
-          href="#"
-          aria-label="Il Foro – go to homepage"
-          className="flex shrink-0 items-center transition-opacity duration-200 hover:opacity-80"
-        >
-          <Image
-            src={logoSrc}
-            alt={logoAlt}
-            width={213}
-            height={213}
-            priority
-            className="h-auto w-24 sm:w-32 lg:w-48 object-contain"
-          />
-        </Link>
+          <div className="hidden items-center gap-8 lg:flex flex-1 justify-start">
+            {rightLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="font-space-grotesk text-base font-medium text-black transition-opacity hover:opacity-60"
+              >
+                {link.label}
+              </Link>
+            ))}
 
-        {/* Right Links + Button (Desktop) */}
-        <div className="hidden items-center gap-25 lg:flex">
-          {rightLinks.map((link) => (
             <Link
-              key={link.href}
-              href={link.href}
-              className="font-space-grotesk text-2xl font-medium text-black transition-opacity duration-200 hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              href={newsletterHref}
+              className="font-space-grotesk flex items-center gap-2 rounded-xl border border-black bg-mauve px-4 py-2 text-sm font-medium text-cream transition-all hover:bg-[#6d3d3d] hover:shadow-md"
             >
-              {link.label}
+              <span>{newsletterLabel}</span>
+              <NewsletterIcon width={16} height={16} className="text-cream" />
             </Link>
-          ))}
+          </div>
 
-          <Link
-            href={newsletterHref}
-            className="font-space-grotesk flex items-center gap-1.5 rounded-2xl border border-black bg-(--color-brand-accent) px-8 py-4 text-2xl font-medium text-cream transition-all duration-200 hover:bg-[#6d3d3d] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
-            aria-label="Subscribe to Il Foro newsletter"
+          <button
+            className="flex flex-col gap-1.5 p-2 lg:hidden absolute right-6"
+            onClick={() => setMenuOpen((prev) => !prev)}
           >
-            <span>{newsletterLabel}</span>
-            <NewsletterIcon
-              width={22}
-              height={22}
-              className="text-cream"
-              aria-hidden="true"
-            />
-          </Link>
+            <span className={`block h-0.5 w-6 bg-black transition-all ${menuOpen ? "translate-y-2 rotate-45" : ""}`} />
+            <span className={`block h-0.5 w-6 bg-black transition-all ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-0.5 w-6 bg-black transition-all ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+          </button>
         </div>
+      </nav>
 
-        {/* Mobile hamburger */}
-        <button
-          className="flex flex-col gap-1 p-2 lg:hidden"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-menu"
-        >
-          <span
-            className={`block h-[2px] w-6 origin-center bg-black transition-all duration-300 ${
-              menuOpen ? "translate-y-[7px] rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`block h-[2px] w-6 bg-black transition-all duration-300 ${
-              menuOpen ? "scale-x-0 opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block h-[2px] w-6 origin-center bg-black transition-all duration-300 ${
-              menuOpen ? "-translate-y-[7px] -rotate-45" : ""
-            }`}
-          />
-        </button>
-      </div>
-
-      {/* ── Mobile dropdown menu ── */}
       <div
         id="mobile-menu"
-        className={`overflow-hidden border-t border-black/10 bg-white transition-all duration-300 ease-in-out lg:hidden ${
-          menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+        className={`absolute left-0 top-full w-full transition-all duration-250 ease-out lg:hidden ${
+          menuOpen 
+            ? "max-h-[500px] opacity-100 translate-y-0" 
+            : "max-h-0 opacity-0 -translate-y-4 pointer-events-none"
         }`}
-        aria-hidden={!menuOpen}
       >
-        <div className="flex flex-col gap-4 px-6 py-5">
+        <div className="flex flex-col items-start gap-4 py-8 pl-8 pr-8">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-space-grotesk text-2xl font-medium text-black transition-opacity duration-200 hover:opacity-60"
+              className="font-space-grotesk text-xl font-medium text-black transition-opacity duration-200 hover:opacity-60"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
@@ -173,20 +147,14 @@ export default function Navbar({
 
           <Link
             href={newsletterHref}
-            className="font-space-grotesk mt-1 flex w-fit items-center gap-1.5 rounded-2xl border border-black bg-(--color-brand-accent) px-8 py-3.5 text-2xl font-medium text-cream transition-all duration-200 hover:bg-[#6d3d3d]"
-            aria-label="Subscribe to Il Foro newsletter"
+            className="font-space-grotesk mt-2 flex w-fit items-center gap-2 rounded-xl border border-black bg-mauve px-6 py-2.5 text-xl font-medium text-cream transition-all duration-200 hover:bg-[#6d3d3d]"
             onClick={() => setMenuOpen(false)}
           >
             <span>{newsletterLabel}</span>
-            <NewsletterIcon
-              width={22}
-              height={22}
-              className="text-cream"
-              aria-hidden="true"
-            />
+            <NewsletterIcon width={20} height={20} className="text-cream" />
           </Link>
         </div>
       </div>
-    </nav>
+    </header>
   );
 }
