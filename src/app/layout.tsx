@@ -1,21 +1,28 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { ebGaramond, spaceGrotesk, inter } from "@/app/ui/fonts";
+import Navbar from "@/layout/Navbar";
+import Footer from "@/layout/Footer";
+import "@/app/globals.css";
 
-// You can add metadata specific to your login page here!
 export const metadata: Metadata = {
-  title: "Login | Foro",
+  title: "Foro",
+  description: "Discover and track competitions.",
 };
 
-export default function Layout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Nested layouts must return standard UI elements (like main, div, or fragments)
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      {/* You can keep your Image imports and other UI wrapper logic here */}
-      {children}
-    </main>
+    <html lang="en">
+      <body
+        className={`${ebGaramond.className} ${spaceGrotesk.variable} ${inter.variable} antialiased`}
+      >
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
+    </html>
   );
 }
