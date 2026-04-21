@@ -1,8 +1,8 @@
 import "@/app/globals.css";
 import { spaceGrotesk } from "@/app/ui/fonts";
 
-export default function SignupLayout({
-  children,
+export default function SignupLayout({ children }: { children: React.ReactNode }) {
+  return <main>{children}</main>;
 }: Readonly<{
   children: React.ReactNode;
 }>) {
