@@ -14,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${ebGaramond.className} ${spaceGrotesk.variable} ${inter.variable} antialiased`}>
+      <body
+        className={`${ebGaramond.className} ${spaceGrotesk.variable} ${inter.variable} antialiased`}
+      >
         {children}
       </body>
     </html>
