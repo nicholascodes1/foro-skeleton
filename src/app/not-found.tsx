@@ -5,12 +5,12 @@ export default function NotFound() {
     return (
       <>
         <main className="flex flex-col items-center h-screen justify-center font-garamond text-5xl leading-16">
-                <Image
+        <Image
             src="/marketing-page-assets/il-foro-logo-wip.png"
             alt="il-foro-wip logo"
             width={120}
             height={60}
-            className="h-auto w-45"
+            className="h-auto w-45 p-2"
           />
           <h1 className="text-center">
             Sorry page not found 404...we'll get this fixed asap.
