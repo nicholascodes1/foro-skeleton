@@ -236,7 +236,7 @@ function SignupContent() {
       <div className="flex min-h-screen items-center justify-center bg-olive px-6 font-space-grotesk">
         <div className="max-w-md rounded-2xl bg-cream px-10 py-12 text-center shadow-lg">
           <Image
-            src="/il_foro_logo_signup.png"
+            src="/public/signup-page/Logo.svg"
             alt="Il Foro Logo"
             width={120}
             height={120}
@@ -267,7 +267,7 @@ function SignupContent() {
       <div className="relative hidden shrink-0 lg:block lg:w-[25.9%]">
         <div className="absolute inset-0">
           <Image
-            src="/decorative-pattern.svg"
+            src="/public/decorative-pattern/top.svg"
             alt="Decorative pattern"
             fill
             className="object-cover"
@@ -354,7 +354,7 @@ function SignupContent() {
                     className="flex h-[67px] items-center justify-center gap-6 rounded-lg border border-dark-gray px-6 text-xl font-medium text-dark-gray transition-all hover:bg-dark-gray/5"
                   >
                     <Image
-                      src="/google-icon.svg"
+                      src="/public/signup-page/google-icon.svg"
                       alt="Google"
                       width={38}
                       height={38}
