@@ -33,7 +33,7 @@ const bottomLinks: SideBarItem[] = [
     {
         label: "Back",
         href: "/back",
-        iconSrc: "/dashboard-assets/sidebar-assets/BackIcon.svg",
+        iconSrc: "/dashboard-assets/sidebar-assets/back-arrow.svg",
     }
 ];
 
@@ -75,7 +75,7 @@ export default function Sidebar() {
               />
             ) : (
               <Image
-                src="/marketing-page-assets/il-foro-icon.png"
+                src="/dashboard-assets/sidebar-assets/il-foro-logo-small.svg"
                 alt="Il Foro Face Icon"
                 width={36}
                 height={36}
