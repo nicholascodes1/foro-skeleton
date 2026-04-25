@@ -9,14 +9,12 @@ import HeroUsedByStudents from "@/components/marketing-page/UsedByStudents/UsedB
 export default function Page() {
   return (
     <main>
-      {/* Wrap the ENTIRE page content inside the Parallax component */}
       <Parallax 
         bgImage="/images/hero-catalogue-bg.png" 
-        strength={800} // You might want to increase strength since the scroll is longer now
+        strength={800} // adjust the strength of the parallax effect
         bgImageStyle={{ objectFit: "contain", objectPosition: "top" }}
       >
         
-        {/* Top Hero Section */}
         <div className="pt-24">
           <HeroWelcome />
         </div>
