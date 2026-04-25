@@ -1,4 +1,3 @@
-// SubjectTag.tsx
 import React from "react";
 
 export type SubjectName =
@@ -13,7 +12,6 @@ interface SubjectTagProps {
   subject: SubjectName;
 }
 
-// Dictionary for colors
 const SUBJECT_COLOUR: Record<SubjectName, string> = {
   Maths: "bg-[#a1b866]",
   Engineering: "bg-[#f59e42]",
@@ -23,25 +21,20 @@ const SUBJECT_COLOUR: Record<SubjectName, string> = {
   Medicine: "bg-white",
 };
 
-// Empty SVG Placeholder Component
-const Icon = () => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="shrink-0"
-  >
-    {/* TODO: put svg tags here */}
-  </svg>
-);
+// 1. Create a dictionary mapping subjects to their file paths
+// Note: Files in the "public" folder are served from the root "/"
+const SUBJECT_ICON_PATHS: Record<SubjectName, string> = {
+  Maths: "/tags/Math.svg", 
+  Engineering: "/tags/Engineering.svg",
+  Chemistry: "/tags/Chem Bio Medicine.svg",
+  Physics: "/tags/Physics.svg",
+  Biology: "/tags/Chem Bio Medicine.svg", 
+  Medicine: "/tags/Chem Bio Medicine.svg",
+};
 
 export default function SubjectTag({ subject }: SubjectTagProps) {
-  const bgColor = SUBJECT_COLOUR[subject] || "bg-gray-200"; // this is a fallback colour
+  const bgColor = SUBJECT_COLOUR[subject] || "bg-gray-200";
+  const iconPath = SUBJECT_ICON_PATHS[subject];
 
   return (
     <div
@@ -51,7 +44,12 @@ export default function SubjectTag({ subject }: SubjectTagProps) {
       <span className="text-[11px] sm:text-xs font-space-grotesk font-semibold text-black tracking-wide">
         {subject}
       </span>
-      <Icon />
+      
+      <img 
+        src={iconPath} 
+        alt={`${subject} icon`} 
+        className="w-4 h-4 shrink-0" 
+      />
     </div>
   );
 }
