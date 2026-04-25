@@ -41,7 +41,7 @@ export default function Footer() {
           <div className="flex items-center gap-5">
             <SocialIcon href="https://www.linkedin.com/company/ilforo" src="/marketing-page-assets/HeroWelcome-assets/linkedin.svg" alt="LinkedIn" />
             <SocialIcon href="https://www.instagram.com/ilforo.web/" src="/marketing-page-assets/HeroWelcome-assets/instagram.svg" alt="Instagram" />
-            <SocialIcon href="mailto:contact@ilforo.com" src="/marketing-page-assets/Footer Assets/mail.svg" alt="Email" />
+            <SocialIcon href="mailto:contactilforo@gmail.com" src="/marketing-page-assets/Footer Assets/mail.svg" alt="Email" />
           </div>
 
           <p className="font-space-grotesk text-sm font-medium text-black/40">
