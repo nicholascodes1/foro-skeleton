@@ -39,6 +39,10 @@ interface CompetitionCardProps {
 }
 
 export default function CompetitionCard({ data, rotation = 0 }: CompetitionCardProps) {
+   if (!data) {
+     return null;
+   }
+  
   return (
     <article
       className="w-full flex flex-col rounded-xl border border-gray-200 bg-white overflow-hidden
