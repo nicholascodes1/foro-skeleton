@@ -121,7 +121,7 @@ export default function Navbar({
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-space-grotesk text-base font-medium text-black transition-opacity hover:opacity-60 transition-transform duration-300 ease-in-out hover:scale-105"
+                className="font-space-grotesk text-base font-medium text-black transition-all hover:opacity-60 duration-300 ease-in-out hover:scale-105"
               >
                 {link.label}
               </Link>
@@ -129,7 +129,7 @@ export default function Navbar({
 
             <Link
               href={newsletterHref}
-              className="font-space-grotesk flex items-center gap-2 rounded-xl border border-black bg-mauve px-4 py-2 text-sm font-medium text-cream transition-all hover:shadow-sm transition-transform duration-300 ease-in-out hover:scale-105 hover:brightness-90"
+              className="font-space-grotesk flex items-center gap-2 rounded-xl border border-black bg-mauve px-4 py-2 text-sm font-medium text-cream transition-all hover:shadow-sm duration-300 ease-in-out hover:scale-105 hover:brightness-90"
             >
               <span>{newsletterLabel}</span>
               <NewsletterIcon width={16} height={16} className="text-cream" />
@@ -179,7 +179,7 @@ export default function Navbar({
 
           <Link
             href={newsletterHref}
-            className="font-space-grotesk mt-2 flex w-fit items-center gap-2 rounded-xl border border-black bg-mauve px-6 py-3 text-xl font-medium text-cream transition-all duration-200 hover:brightness-90 transition-transform duration-300 ease-in-out hover:scale-105"
+            className="font-space-grotesk mt-2 flex w-fit items-center gap-2 rounded-xl border border-black bg-mauve px-6 py-3 text-xl font-medium text-cream transition-all hover:brightness-90 duration-200 ease-in-out hover:scale-105"
             onClick={() => setMenuOpen(false)}
           >
             <span>{newsletterLabel}</span>
