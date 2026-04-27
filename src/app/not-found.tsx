@@ -13,7 +13,6 @@ interface DigitData {
 
 const randomWeighted = () => (Math.random() + Math.random() + Math.random()) / 3;
 
-// Added an isInitial flag to differentiate spawn behaviors
 const createDigit = (char: string, existingPositions: DigitData[], isInitial: boolean): DigitData => {
   let placed = false;
   let attempts = 0;
@@ -95,7 +94,7 @@ export default function NotFound() {
       className="min-h-screen w-full bg-cream flex flex-col md:flex-row overflow-hidden select-none relative"
       ref={constraintsRef}
     >
-      {/* Draggable Numbers */}
+      {/* 404 */}
       {isMounted && digitsData.map((item) => (
         <motion.div
           key={item.id}
