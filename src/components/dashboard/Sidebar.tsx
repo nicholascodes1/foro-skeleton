@@ -42,7 +42,7 @@ export default function Sidebar() {
     const router = useRouter()
     return (
       <aside
-        className={`relative flex flex-col h-screen bg-dark-cream transition-all duration-300 ${
+        className={`relative flex flex-col h-screen sticky top-0 bg-dark-cream transition-all duration-300 ${
           isOpen ? "w-64 px-5" : "w-16 px-3"
         } py-8 font-sans text-black`}
       >

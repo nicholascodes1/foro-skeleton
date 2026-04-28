@@ -1,51 +1,96 @@
 import Sidebar from "@/components/dashboard/Sidebar";
 import CompetitionCard, { type CompetitionCardData } from "@/components/dashboard/CompetitionCard";
 
-const mockCompetitions: CompetitionCardData[] = [
+export const mockCompetitions: CompetitionCardData[] = [
   {
     title: "Global Robotics Championship 2026",
-    image: "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?q=80&w=800&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?q=80&w=800",
     tags: ["Popular", "Tech"],
-    subjects: ["Maths"],
+    subjects: ["Chemistry", "Physics"],
+    registerDeadline: "2026-05-15",
     location: "San Francisco, CA (Hybrid)",
     prizeType: "$50,000 Pool",
-    winRate: "Top 5%",
     format: "Team (3-5 members)",
-    information: "Join the ultimate robotics showdown! Design, build, and program autonomous robots to solve complex challenges. Perfect for high school students looking to boost their STEM portfolios.",
+    information:
+      "Design and program autonomous robots for complex navigation challenges.",
     studentsCount: 1500,
-    spotsRemaining: "45",
   },
   {
     title: "International Math Olympiad Qualifiers",
-    image: "https://images.unsplash.com/photo-1635372722656-389f87a941b7?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image:
+      "https://images.unsplash.com/photo-1635372722656-389f87a941b7?q=80&w=800",
     tags: ["Elite", "Math"],
-    subjects: ["Biology", "Medicine"],
+    subjects: ["Mathematics"],
+    registerDeadline: "2026-03-01",
     location: "Online",
     prizeType: "Direct Qualification",
-    winRate: "Top 1%",
     format: "Individual",
-    information: "Test your mathematical prowess against the best minds globally. This qualifier is the first step towards representing your country at the prestigious IMO.",
+    information:
+      "The ultimate proving ground for the world's best young mathematicians.",
     studentsCount: 3200,
-    spotsRemaining: "Unlimited",
   },
   {
     title: "Eco-Innovation Design Challenge",
-    image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=800&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=800",
     tags: ["New", "Science"],
-    subjects: ["Engineering", "Physics"],
+    subjects: ["Environmental Science", "Chemistry"],
+    registerDeadline: "2026-04-20",
     location: "London, UK",
     prizeType: "Incubator Access",
-    winRate: "Top 10%",
     format: "Duo (2 members)",
-    information: "Pitch your sustainable product ideas to a panel of industry experts. Looking for innovative solutions to everyday environmental problems utilizing renewable materials.",
+    information:
+      "Pitch sustainable product ideas to a panel of venture capitalists.",
     studentsCount: 420,
-    spotsRemaining: "12",
-  }
+  },
+  {
+    title: "AI Ethics & Policy Symposium",
+    image:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800",
+    tags: ["Humanities", "Tech"],
+    subjects: ["Computer Science", "Economics"],
+    registerDeadline: "2026-06-10",
+    location: "Washington D.C.",
+    prizeType: "Internship Grant",
+    format: "Individual",
+    information:
+      "Debate the future of artificial intelligence and its impact on global policy.",
+    studentsCount: 850,
+  },
+  {
+    title: "Bio-Medical Breakthrough Hack",
+    image:
+      "https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=800",
+    tags: ["Medical", "Research"],
+    subjects: ["Biology", "Chemistry"],
+    registerDeadline: "2026-07-05",
+    location: "Boston, MA",
+    prizeType: "$10,000 Research Fund",
+    format: "Team (2-4 members)",
+    information:
+      "Solve real-world healthcare problems using data science and lab research.",
+    studentsCount: 600,
+  },
+  {
+    title: "Global Markets Trading Challenge",
+    image:
+      "https://images.unsplash.com/photo-1611974714139-edddce9979ed?q=80&w=800",
+    tags: ["Finance", "High-Stakes"],
+    subjects: ["Mathematics", "Economics"],
+    registerDeadline: "2026-08-12",
+    location: "Online",
+    prizeType: "Prop Firm Funded Account",
+    format: "Individual",
+    information:
+      "Manage a virtual portfolio and compete for the highest risk-adjusted returns.",
+    studentsCount: 5000,
+  },
 ];
 
 export default function Dashboard() {
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-cream">
       <Sidebar />
 
       <main className="flex-1 p-8">

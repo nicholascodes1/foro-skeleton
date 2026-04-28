@@ -156,7 +156,7 @@ export default function NotFound() {
           onClick={() => window.history.back()}
         >
           Take me back...
-        </button>
+        </Button>
       </div>
     </div>
   );
