@@ -8,13 +8,12 @@ export interface CompetitionCardData {
   image: string;
   tags: string[];
   subjects: SubjectName[];
+  registerDeadline: string;
   location: string;
   prizeType: string;
-  winRate: string;
   format: string;
   information: string;
   studentsCount: number;
-  spotsRemaining: string;
 }
 
 const AVATAR_COLORS = ["#60a5fa", "#f472b6", "#4ade80"]; //temp
@@ -39,6 +38,7 @@ interface CompetitionCardProps {
 }
 
 export default function CompetitionCard({ data, rotation = 0 }: CompetitionCardProps) {
+  
    if (!data) {
      return null;
    }
@@ -165,10 +165,10 @@ export default function CompetitionCard({ data, rotation = 0 }: CompetitionCardP
         {/* Description */}
         <div className="flex flex-col gap-1.5 mt-0">
           <p className="text-[11px] sm:text-xs font-space-grotesk text-gray-600 leading-snug">
-            <span className="font-bold text-gray-800">Prize Type:</span> {data.prizeType}
+            <span className="font-bold text-gray-800">Register Deadline:</span> {data.registerDeadline}
           </p>
           <p className="text-[11px] sm:text-xs font-space-grotesk text-gray-600 leading-snug">
-            <span className="font-bold text-gray-800">Win rate:</span> {data.winRate}
+            <span className="font-bold text-gray-800">Prize Type:</span> {data.prizeType}
           </p>
           <p className="text-[11px] sm:text-xs font-space-grotesk text-gray-600 leading-snug">
             <span className="font-bold text-gray-800">Format:</span> {data.format}
@@ -200,12 +200,9 @@ export default function CompetitionCard({ data, rotation = 0 }: CompetitionCardP
               ))}
             </div>
             <span className="text-[10px] sm:text-[11px] font-space-grotesk text-gray-500 font-semibold">
-              {data.studentsCount}+ Students Registered!
+              {data.studentsCount}+ Students registered on Il Foro!
             </span>
           </div>
-          <span className="text-[10px] sm:text-[11px] font-space-grotesk text-gray-500 font-semibold">
-            {data.spotsRemaining} Spots Remaining
-          </span>
         </div>
 
         {/* Action Buttons */}
