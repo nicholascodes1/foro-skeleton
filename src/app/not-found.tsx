@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Button } from '@/components/Button';
 
 interface DigitData {
   id: string;
@@ -155,7 +156,7 @@ export default function NotFound() {
           onClick={() => window.history.back()}
         >
           Take me back...
-        </button>
+        </Button>
       </div>
     </div>
   );
