@@ -1,6 +1,10 @@
+"use client";
+
+import React, { useState } from "react";
 import Sidebar from "@/components/dashboard/Sidebar";
-import { type CompetitionCardData } from "@/components/dashboard/CompetitionCard";
-import CompetitionSearchPanel from "@/components/dashboard/CompetitionSearchPanel";
+import CompetitionCard, { type CompetitionCardData } from "@/components/dashboard/CompetitionCard";
+import SearchBar from "@/components/dashboard/SearchBar";
+import Filter from "@/components/dashboard/Filter";
 
 export const mockCompetitions: CompetitionCardData[] = [
   {
@@ -22,7 +26,7 @@ export const mockCompetitions: CompetitionCardData[] = [
     image:
       "https://images.unsplash.com/photo-1635372722656-389f87a941b7?q=80&w=800",
     tags: ["Elite", "Math"],
-    subjects: ["Mathematics"],
+    subjects: ["Maths"],
     registerDeadline: "2026-03-01",
     location: "Online",
     prizeType: "Direct Qualification",
@@ -78,7 +82,7 @@ export const mockCompetitions: CompetitionCardData[] = [
     image:
       "https://images.unsplash.com/photo-1611974714139-edddce9979ed?q=80&w=800",
     tags: ["Finance", "High-Stakes"],
-    subjects: ["Mathematics", "Economics"],
+    subjects: ["Maths", "Economics"],
     registerDeadline: "2026-08-12",
     location: "Online",
     prizeType: "Prop Firm Funded Account",
@@ -90,6 +94,8 @@ export const mockCompetitions: CompetitionCardData[] = [
 ];
 
 export default function Dashboard() {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
   return (
     <div className="flex min-h-screen bg-cream">
       <span className="sticky top-0 h-screen">
@@ -97,7 +103,22 @@ export default function Dashboard() {
       </span>
 
       <main className="flex-1 p-8">
-        <CompetitionSearchPanel competitions={mockCompetitions} />
+        <div className="max-w-7xl mx-auto">
+          
+          <SearchBar
+            isFilterOpen={isFilterOpen} 
+            toggleFilter={() => setIsFilterOpen(!isFilterOpen)} 
+          />
+          
+          <Filter isOpen={isFilterOpen} />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {mockCompetitions.map((comp, index) => (
+              <CompetitionCard key={index} data={comp} />
+            ))}
+          </div>
+
+        </div>
       </main>
     </div>
   );
