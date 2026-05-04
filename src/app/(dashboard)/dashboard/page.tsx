@@ -76,7 +76,7 @@ const mockCompetitions: CompetitionCardData[] = [
     registerDeadline: "2026-08-12",
     location: "Online",
     prizeType: "$50,000 Cash",
-    groupSize: "Individual",
+    groupSize: "Team (1-8 members)",
     information: "Manage a virtual portfolio and compete for the highest risk-adjusted returns.",
     studentsCount: 5000,
   },
@@ -97,7 +97,7 @@ export default function Dashboard() {
   const filteredCompetitions = useMemo(() => {
     return mockCompetitions.filter((comp) => {
 
-      // 1. Search Query
+      // search
       if (searchQuery) {
         const query = searchQuery.toLowerCase();
         if (!comp.title.toLowerCase().includes(query) && !comp.information.toLowerCase().includes(query)) {
@@ -105,41 +105,54 @@ export default function Dashboard() {
         }
       }
 
-      // 2. Location
+      // location
       if (filters.location) {
         if (!comp.location.toLowerCase().includes(filters.location.toLowerCase())) {
           return false;
         }
       }
 
-      // 3. Subjects
+      // subjects
       if (filters.subjects.length > 0) {
         const hasMatchingSubject = comp.subjects.some((sub) => filters.subjects.includes(sub));
         if (!hasMatchingSubject) return false;
       }
 
-      // 4. Prizes
+      // prizes
       if (filters.prizes.length > 0) {
         const matchesPrize = filters.prizes.some((prize) => comp.prizeType.includes(prize));
         if (!matchesPrize) return false;
       }
 
-      // 5. Group Size Logic
+      // group size checks
       const hasGroupFilters = filters.groupTypes.length > 0 || filters.teamSize !== null;
       if (hasGroupFilters) {
         let matchesGroup = false;
 
+        // match the group size string with option
         if (filters.groupTypes.includes(comp.groupSize)) {
           matchesGroup = true;
         }
 
-        if (filters.teamSize !== null && comp.groupSize.startsWith("Team")) {
+        // match the group size range with typed option
+        if (!matchesGroup && comp.groupSize.startsWith("Team")) {
           const bounds = comp.groupSize.match(/\d+/g); 
           if (bounds && bounds.length >= 2) {
             const min = parseInt(bounds[0], 10);
             const max = parseInt(bounds[1], 10);
             
-            if (filters.teamSize >= min && filters.teamSize <= max) {
+            //  if typed team size fits the range
+            if (filters.teamSize !== null && filters.teamSize >= min && filters.teamSize <= max) {
+              matchesGroup = true;
+            }
+
+            // if Individual is checked, does team range include 1?
+            if (filters.groupTypes.includes("Individual") && min <= 1 && max >= 1) {
+              matchesGroup = true;
+            }
+
+            // if Individual is checked, does team range include 1?
+            if (filters.groupTypes.includes("Duo (2 members)") && min <= 2 && max >= 2) {
               matchesGroup = true;
             }
           }

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Interactive Checkbox
@@ -47,7 +47,7 @@ export interface FilterState {
   subjects: string[];
   location: string;
   prizes: string[];
-  groupTypes: string[]; // for "Individual" and "Duo (2 members)"
+  groupTypes: string[]; // for Individual and Duo
   teamSize: number | null; // for the exact team number search
 }
 
@@ -75,11 +75,47 @@ export default function Filter({ isOpen, filters, setFilters }: FilterProps) {
     });
   };
 
+  const prevSize = useRef(filters.teamSize);
+  // direction is 1 (up). If smaller, direction is -1 (down).
+  const direction = (filters.teamSize || 0) > (prevSize.current || 0) ? 1 : -1;
+
+  useEffect(() => {
+    prevSize.current = filters.teamSize;
+  }, [filters.teamSize]);
+
+  // when increasing (1), it drops from top (-15). When decreasing (-1), it slides from bottom (15).
+  const numberVariants = {
+    initial: (dir: number) => ({ 
+      y: dir === 1 ? -10 : 10, 
+      opacity: 0, 
+      filter: "blur(1px)" 
+    }),
+    animate: { 
+      y: 0, 
+      opacity: 1, 
+      filter: "blur(0px)" 
+    },
+    // The old number gets pushed out the opposite way
+    exit: (dir: number) => ({ 
+      y: dir === 1 ? 10 : -10, 
+      opacity: 0, 
+      filter: "blur(1px)" 
+    }),
+  };
+
+  // Make sure you have useState imported!
+const [isShaking, setIsShaking] = useState(false);
+
+const triggerShake = () => {
+  setIsShaking(true);
+  // reset shake after to use again.
+  setTimeout(() => setIsShaking(false), 300); 
+};
+
   return (
     <AnimatePresence initial={false}>
       {isOpen && (
         <motion.div
-          // during this animation, the buttom border doesn't animate and is clipped, can someone find a fix for this?
           initial={{ height: 0, opacity: 0, marginBottom: 0 }}
           animate={{ 
             height: "auto", 
@@ -95,9 +131,9 @@ export default function Filter({ isOpen, filters, setFilters }: FilterProps) {
             height: { duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] },
             opacity: { duration: 0.2 } 
           }}
-          className="overflow-hidden w-full"
+          className="overflow-hidden w-full bg-cream border border-black/30 rounded-xl"
         >
-          <section className="flex flex-col gap-3 bg-cream border border-black/30 rounded-xl p-6 w-full">
+          <section className="flex flex-col gap-3 p-6 w-full">
             <div className="flex flex-wrap items-start gap-6">
               
               {/* subjects */}
@@ -105,7 +141,6 @@ export default function Filter({ isOpen, filters, setFilters }: FilterProps) {
                 <p className="h-10 font-medium text-12 leading-10 text-black">SUBJECT</p>
                 <div className="h-px w-full bg-black/60 mb-2" />
                 <div className="flex flex-col px-2 pt-2 max-h-40 overflow-y-auto [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_transparent] pr-1">
-                  {/* web-kit lets us add hover colour change but doesn't work on firefox, the new 2025 scrollbar stuff is so restrictive i can't add hover, neither of these options have tailwind wtf man */}
                   {SUBJECTS.map((opt) => (
                     <Checkbox key={opt} checked={filters.subjects.includes(opt)} onChange={() => toggleArrayItem("subjects", opt)} label={opt} />
                   ))}
@@ -151,20 +186,59 @@ export default function Filter({ isOpen, filters, setFilters }: FilterProps) {
                   <div className="flex w-full items-center justify-between mt-2">
                     <span className="text-[12px] font-medium text-black truncate pr-2">Team size:</span>
                     <div className="flex items-center border-b border-black/40 transition-colors focus-within:border-black">
-                      
-                      <input
-                        type="number"
-                        min="3"
-                        placeholder="#"
-                        value={filters.teamSize || ""}
-                        onChange={(e) => setFilters(prev => ({ ...prev, teamSize: e.target.value ? parseInt(e.target.value) : null }))}
-                        className="w-8 bg-transparent text-[12px] py-1 text-center text-black focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                      />
-
-                      {/* the up and down arrows */}
-                      <div className="flex flex-col justify-center pl-1">
+                      <div className="relative w-8 flex items-center justify-center overflow-hidden">
                         
-                        {/* up */}
+                        {/* shake */}
+                        <motion.div
+                          animate={isShaking ? { y: [0, -3, 0] } : { y: 0 }}
+                          transition={{ duration: 0.2, ease: "easeOut" }}
+                          className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                        >
+                          {/* odometer */}
+                          <AnimatePresence mode="popLayout" custom={direction}>
+                            <motion.span
+                              key={filters.teamSize || "empty"}
+                              custom={direction}
+                              variants={numberVariants}
+                              initial="initial"
+                              animate="animate"
+                              exit="exit"
+                              transition={{ type: "spring", stiffness: 450, damping: 30 }}
+                              className={`text-[12px] ${filters.teamSize === null ? 'text-black/40' : 'text-black'}`}
+                            >
+                              {filters.teamSize || "#"}
+                            </motion.span>
+                          </AnimatePresence>
+                        </motion.div>
+
+                        {/* input */}
+                        <input
+                          type="number"
+                          min="3"
+                          value={filters.teamSize || ""}
+                          onChange={(e) => setFilters(prev => ({ ...prev, teamSize: e.target.value ? parseInt(e.target.value) : null }))}
+                          onKeyDown={(e) => {
+                            if (e.key === "ArrowDown") {
+                              if (filters.teamSize === 3) {
+                                e.preventDefault();
+                                setFilters(prev => ({ ...prev, teamSize: null })); 
+                              } else if (filters.teamSize === null) {
+                                e.preventDefault();
+                                triggerShake();
+                              }
+                            } else if (e.key === "ArrowUp") {
+                              if (filters.teamSize === null) {
+                                e.preventDefault();
+                                setFilters(prev => ({ ...prev, teamSize: 3 }));
+                              }
+                            }
+                          }}
+                          className="w-full relative z-10 bg-transparent text-transparent caret-black text-[12px] py-1 text-center focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                        />
+                      </div>
+
+                      {/* arrows */}
+                      <div className="flex flex-col justify-center pl-1 relative z-10">
                         <motion.button
                           type="button"
                           whileTap={{ scale: 0.8 }}
@@ -172,29 +246,33 @@ export default function Filter({ isOpen, filters, setFilters }: FilterProps) {
                             ...prev, 
                             teamSize: prev.teamSize ? prev.teamSize + 1 : 3 
                           }))}
-                          className="flex h-3 w-4 items-center justify-center text-black/60 hover:text-black transition-colors focus:outline-none"
+                          className="flex h-3 w-4 items-center justify-center text-black/40 hover:text-black transition-colors focus:outline-none pb-px"
                         >
                           <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M18 15l-6-6-6 6"/>
                           </svg>
                         </motion.button>
 
-                        {/* down */}
                         <motion.button
                           type="button"
-                          whileTap={{ scale: 0.8 }}
-                          onClick={() => setFilters(prev => ({ 
-                            ...prev, 
-                            teamSize: prev.teamSize && prev.teamSize > 3 ? prev.teamSize - 1 : null 
-                          }))}
-                          className="flex h-3 w-4 items-center justify-center text-black/60 hover:text-black transition-colors focus:outline-none"
+                          onClick={() => {
+                            if (filters.teamSize === null) {
+                              triggerShake();
+                            } else {
+                              setFilters(prev => ({ 
+                                ...prev, 
+                                teamSize: prev.teamSize && prev.teamSize > 3 ? prev.teamSize - 1 : null 
+                              }));
+                            }
+                          }}
+                          className="flex h-3 w-4 items-center justify-center text-black/40 hover:text-black transition-colors focus:outline-none pt-px"
                         >
                           <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M6 9l6 6 6-6"/>
                           </svg>
                         </motion.button>
-
                       </div>
+                      
                     </div>
                   </div>
                 </div>
