@@ -138,7 +138,7 @@ const triggerShake = () => {
               
               {/* subjects */}
               <div className="flex min-w-45 max-w-60 flex-1 flex-col px-2">
-                <p className="h-10 font-medium text-12 leading-10 text-black">SUBJECT</p>
+                <p className="h-10 font-medium text-12 leading-10 text-black">Subject</p>
                 <div className="h-px w-full bg-black/60 mb-2" />
                 <div className="flex flex-col px-2 pt-2 max-h-40 overflow-y-auto [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_transparent] pr-1">
                   {SUBJECTS.map((opt) => (
@@ -149,7 +149,7 @@ const triggerShake = () => {
 
               {/* location (typed) */}
               <div className="flex min-w-45 max-w-60 flex-1 flex-col px-2">
-                <p className="h-10 font-medium text-12 leading-10 text-black">LOCATION</p>
+                <p className="h-10 font-medium text-12 leading-10 text-black">Location</p>
                 <div className="h-px w-full bg-black/60 mb-2" />
                 <div className="flex flex-col px-2 pt-2">
                   <input
@@ -164,7 +164,7 @@ const triggerShake = () => {
 
               {/* prize type */}
               <div className="flex min-w-45 max-w-60 flex-1 flex-col px-2">
-                <p className="h-10 font-medium text-12 leading-10 text-black">PRIZE</p>
+                <p className="h-10 font-medium text-12 leading-10 text-black">Prize</p>
                 <div className="h-px w-full bg-black/60 mb-2" />
                 <div className="flex flex-col px-2 pt-2">
                   {PRIZES.map((opt) => (
@@ -175,7 +175,7 @@ const triggerShake = () => {
 
               {/* group size */}
               <div className="flex min-w-45 max-w-60 flex-1 flex-col px-2">
-                <p className="h-10 font-medium text-12 leading-10 text-black">GROUP SIZE</p>
+                <p className="h-10 font-medium text-12 leading-10 text-black">Group Size</p>
                 <div className="h-px w-full bg-black/60 mb-2" />
                 <div className="flex flex-col px-2 pt-2">
                   {GROUPS.map((opt) => (

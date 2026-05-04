@@ -32,7 +32,7 @@ export default function SearchBar({ isFilterOpen, toggleFilter, searchQuery, onS
         className="flex items-center gap-2 px-6 py-3 bg-dark-cream border border-black text-black font-space-grotesk text-sm font-semibold hover:brightness-90 transition-all shrink-0 rounded-lg"
         onClick={toggleFilter}
       >
-        <span>FILTER</span>
+        <span>Filter</span>
 
         {/* TODO: can someone change this svg into Image tag from next.js, turn the svg code into a .svg file first. */}
         <svg
