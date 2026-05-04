@@ -154,7 +154,7 @@ const triggerShake = () => {
                 <div className="flex flex-col px-2 pt-2">
                   <input
                     type="text"
-                    placeholder="Type location (e.g. Online)"
+                    placeholder="Search location (e.g. Online)"
                     value={filters.location}
                     onChange={(e) => setFilters(prev => ({ ...prev, location: e.target.value }))}
                     className="w-full bg-transparent border-b border-black/40 text-[12px] py-1 text-black placeholder:text-gray-500 focus:outline-none focus:border-black transition-colors"

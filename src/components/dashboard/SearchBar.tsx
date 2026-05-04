@@ -29,7 +29,7 @@ export default function SearchBar({ isFilterOpen, toggleFilter, searchQuery, onS
 
       <button
         type="button"
-        className="flex items-center gap-2 px-6 py-3 bg-dark-cream border border-black text-black font-space-grotesk text-sm font-bold hover:brightness-90 transition-all shrink-0 rounded-lg"
+        className="flex items-center gap-2 px-6 py-3 bg-dark-cream border border-black text-black font-space-grotesk text-sm font-semibold hover:brightness-90 transition-all shrink-0 rounded-lg"
         onClick={toggleFilter}
       >
         <span>FILTER</span>
@@ -37,7 +37,7 @@ export default function SearchBar({ isFilterOpen, toggleFilter, searchQuery, onS
         {/* TODO: can someone change this svg into Image tag from next.js, turn the svg code into a .svg file first. */}
         <svg
           width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-          className={`transition-transform duration-300 ${isFilterOpen ? "rotate-180" : ""}`}
+          className={`transition-all duration-400 ${isFilterOpen ? "rotate-180 ease-out" : ""}`}
         >
           <path d="M4 6H20M7 12H17M10 18H14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
