@@ -39,7 +39,8 @@ const bottomLinks: SideBarItem[] = [
 
 export default function Sidebar() {
     const [isOpen, setIsOpen] = useState(false);
-    const router = useRouter()
+    const router = useRouter();
+
     return (
       <aside
         className={`sticky flex flex-col h-screen top-0 bg-dark-cream transition-all duration-300 ${
@@ -56,33 +57,43 @@ export default function Sidebar() {
         </button>
 
         {/* Top section logo */}
-        <div
-          className={`mb-12 flex ${isOpen ? "justify-start pl-1" : "justify-center"} w-full transition-all duration-300`}
-        >
+        <div className="mb-10 relative h-12 w-full flex items-center">
           <button
             onClick={() => router.refresh()}
-            className="focus:outline-none cursor-pointer"
+            className="focus:outline-none cursor-pointer w-full h-full relative"
             aria-label="Refresh page"
           >
-            {isOpen ? (
+            {/* Large Logo */}
+            <div 
+              className={`absolute inset-0 pt-2 pl-3 flex items-center justify-start transition-opacity duration-300 ${
+                isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}
+            >
               <Image
                 src="/marketing-page-assets/il-foro-logo.png"
                 alt="Il Foro Logo"
                 width={120}
                 height={65}
-                className="object-contain transition-all ease-in-out hover:scale-105 duration-300"
+                className="object-contain transition-transform duration-300"
                 priority
               />
-            ) : (
+            </div>
+
+            {/* Small Logo */}
+            <div 
+              className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+                isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
+              }`}
+            >
               <Image
                 src="/dashboard-assets/sidebar-assets/il-foro-logo-small.svg"
                 alt="Il Foro Face Icon"
                 width={36}
                 height={36}
-                className="object-contain transition-all duration-300 ease-in-out hover:scale-105"
+                className="object-contain transition-transform duration-300"
                 priority
               />
-            )}
+            </div>
           </button>
         </div>
 
@@ -92,7 +103,7 @@ export default function Sidebar() {
             <Link
               key={link.label}
               href={link.href}
-              className={`flex items-center hover:opacity-70 transition-all duration-300 ease-in-out hover:scale-105 ${
+              className={`flex items-center hover:opacity-70 transition-all duration-300 ease-in-out ${
                 isOpen ? "justify-start" : "justify-center"
               }`}
             >
@@ -101,7 +112,7 @@ export default function Sidebar() {
                   src={link.iconSrc}
                   alt={`${link.label} icon`}
                   fill
-                  className="object-contain transition-all duration-300 ease-in-out hover:scale-105"
+                  className="object-contain"
                 />
               </div>
 
@@ -130,7 +141,7 @@ export default function Sidebar() {
             <Link
               key={link.label}
               href={link.href}
-              className={`flex items-center hover:opacity-70 transition-all duration-300 ease-in-out hover:scale-105 ${
+              className={`flex items-center hover:opacity-70 transition-all duration-300 ease-in-out ${
                 isOpen ? "justify-start" : "justify-center"
               }`}
             >
@@ -139,7 +150,7 @@ export default function Sidebar() {
                   src={link.iconSrc}
                   alt={`${link.label} icon`}
                   fill
-                  className="object-contain transition-all duration-300 ease-in-out hover:scale-105"
+                  className="object-contain transition-all duration-300 ease-in-out"
                 />
               </div>
 
