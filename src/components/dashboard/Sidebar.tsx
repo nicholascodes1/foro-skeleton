@@ -43,7 +43,7 @@ export default function Sidebar() {
 
     return (
       <aside
-        className={`sticky flex flex-col h-screen top-0 bg-dark-cream transition-all duration-300 ease-in-out ${
+        className={`sticky flex flex-col h-screen top-0 bg-dark-cream transition-all duration-300 ${
           isOpen ? "w-64 px-5" : "w-16 px-3"
         } py-8 font-sans text-black`}
       >
