@@ -171,9 +171,6 @@ export default function CompetitionCard({ data, rotation = 0 }: CompetitionCardP
 
         {/* Action Buttons */}
         <div className="mt-1 flex gap-2.5">
-          <Button bg="white" size="sm" className="flex-1 shadow-sm hover:border-gray-300 hover:bg-gray-50">
-            More Info
-          </Button>
           <Button bg="success" size="sm" className="flex-1 shadow-sm hover:bg-[#66ae71]">
             Register
           </Button>

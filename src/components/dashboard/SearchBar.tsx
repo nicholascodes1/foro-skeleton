@@ -23,7 +23,7 @@ export default function SearchBar({ isFilterOpen, toggleFilter, searchQuery, onS
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
           placeholder="Search"
-          className="w-full bg-white border border-black text-gray-900 font-bold text-md font-garamond px-4 py-2.5 pl-11 focus:outline-none focus:ring-1 focus:ring-black transition-all rounded-lg placeholder:text-gray-400 placeholder:font-bold"
+          className="w-full bg-white border border-black text-gray-900 font-bold text-md font-space-grotesk px-4 py-2.5 pl-11 focus:outline-none focus:ring-1 focus:ring-black transition-all rounded-lg placeholder:text-gray-400 placeholder:font-bold"
         />
       </div>
 
